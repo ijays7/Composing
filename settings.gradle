@@ -1,0 +1,2 @@
+rootProject.name = "ComposeIt"
+include ':app'
