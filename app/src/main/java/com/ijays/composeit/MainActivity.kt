@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.ijays.composeit.image.ImageDisplayActivity
 import com.ijays.composeit.text.TextDisplayActivity
+import com.ijays.composeit.text.TextFieldActivity
 import com.ijays.composeit.text.TextStyleActivity
 import com.ijays.composeit.ui.typography
 
@@ -41,6 +42,11 @@ class MainActivity : AppCompatActivity() {
                 ButtonComponent(context = context,
                         intent = Intent(context, TextStyleActivity::class.java),
                         text = "Text style test")
+
+                AddSpacer()
+                ButtonComponent(context = context,
+                        intent = Intent(context, TextFieldActivity::class.java),
+                        text = "Text input test")
 
                 AddSpacer()
                 ButtonComponent(context = context,
