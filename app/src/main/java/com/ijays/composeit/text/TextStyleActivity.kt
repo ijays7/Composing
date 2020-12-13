@@ -1,7 +1,6 @@
 package com.ijays.composeit.text
 
 import android.os.Bundle
-import android.widget.Space
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.Spacer

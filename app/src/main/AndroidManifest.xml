@@ -21,7 +21,10 @@
         </activity>
 
         <activity android:name=".text.TextDisplayActivity" />
+
         <activity android:name=".text.TextStyleActivity" />
+
+        <activity android:name=".image.ImageDisplayActivity" />
     </application>
 
 </manifest>

@@ -18,10 +18,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
+import com.ijays.composeit.image.ImageDisplayActivity
 import com.ijays.composeit.text.TextDisplayActivity
 import com.ijays.composeit.text.TextStyleActivity
 import com.ijays.composeit.ui.typography
@@ -39,10 +38,14 @@ class MainActivity : AppCompatActivity() {
                         text = "Simple text display")
 
                 AddSpacer()
-
                 ButtonComponent(context = context,
                         intent = Intent(context, TextStyleActivity::class.java),
                         text = "Text style test")
+
+                AddSpacer()
+                ButtonComponent(context = context,
+                        intent = Intent(context, ImageDisplayActivity::class.java),
+                        text = "Image Display test")
             }
         }
     }
