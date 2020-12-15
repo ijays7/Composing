@@ -27,6 +27,8 @@
         <activity android:name=".text.TextFieldActivity" />
 
         <activity android:name=".image.ImageDisplayActivity" />
+
+        <activity android:name=".button.MaterialButtonActivity" />
     </application>
 
 </manifest>
