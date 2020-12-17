@@ -51,7 +51,7 @@ class ImageDisplayActivity : AppCompatActivity() {
                         .clickable(onClick = {
                             Toast.makeText(this@ImageDisplayActivity, "click image", Toast.LENGTH_SHORT).show()
                         })
-        Image(asset = image,
+        Image(bitmap = image,
                 modifier = imageModifier,
                 // 设置缩放模式，相当于CenterCrop
                 contentScale = ContentScale.Crop)

@@ -35,29 +35,39 @@ class MainActivity : AppCompatActivity() {
             ScrollableColumn(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
                 val context = this@MainActivity
 
-                ButtonComponent(context = context,
-                        intent = Intent(context, TextDisplayActivity::class.java),
-                        text = "Simple text display")
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, TextDisplayActivity::class.java),
+                    text = "Simple text display"
+                )
 
                 AddSpacer()
-                ButtonComponent(context = context,
-                        intent = Intent(context, TextStyleActivity::class.java),
-                        text = "Text style test")
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, TextStyleActivity::class.java),
+                    text = "Text style test"
+                )
 
                 AddSpacer()
-                ButtonComponent(context = context,
-                        intent = Intent(context, TextFieldActivity::class.java),
-                        text = "Text input test")
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, TextFieldActivity::class.java),
+                    text = "Text input test"
+                )
 
                 AddSpacer()
-                ButtonComponent(context = context,
-                        intent = Intent(context, ImageDisplayActivity::class.java),
-                        text = "Image Display test")
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, ImageDisplayActivity::class.java),
+                    text = "Image Display test"
+                )
 
                 AddSpacer()
-                ButtonComponent(context = context,
-                        intent = Intent(context, MaterialButtonActivity::class.java),
-                        text = "Material Button")
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, MaterialButtonActivity::class.java),
+                    text = "Material Button"
+                )
             }
         }
     }
@@ -68,22 +78,24 @@ class MainActivity : AppCompatActivity() {
         // 垂直摆放子控件
         Column(modifier = Modifier.padding(16.dp)) {
             val imageModifier =
-                    // 指定图片高度
-                    Modifier.preferredHeight(180.dp)
-                            // 指定图片的宽度应足以填充所属布局
-                            .fillMaxWidth()
-                            .clip(shape = RoundedCornerShape(12.dp))
-                            .clickable(onClick = {
-                                Toast.makeText(this@MainActivity, "Click Test", Toast.LENGTH_LONG).show()
-                            })
-            Image(asset = image, imageModifier, contentScale = ContentScale.Crop)
+                // 指定图片高度
+                Modifier.preferredHeight(180.dp)
+                    // 指定图片的宽度应足以填充所属布局
+                    .fillMaxWidth()
+                    .clip(shape = RoundedCornerShape(12.dp))
+                    .clickable(onClick = {
+                        Toast.makeText(this@MainActivity, "Click Test", Toast.LENGTH_LONG).show()
+                    })
+            Image(bitmap = image, imageModifier, contentScale = ContentScale.Crop)
 
             Spacer(modifier = Modifier.preferredHeight(16.dp))
 
-            Text(text = "A day wandering through the sandHills in Shark Fin Cove, and a few of the sights I saw",
-                    style = typography.h6,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis)
+            Text(
+                text = "A day wandering through the sandHills in Shark Fin Cove, and a few of the sights I saw",
+                style = typography.h6,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
+            )
             Text(text = "Davenport, California", style = typography.body2)
             Text(text = "December 2018", style = typography.body2)
 
@@ -99,15 +111,17 @@ class MainActivity : AppCompatActivity() {
             // Create references for the composables to constrain
             val (button, text) = createRefs()
 
-            Button(onClick = { Toast.makeText(this@MainActivity, "Button click", Toast.LENGTH_LONG).show() },
-                    // Assign reference "button" to the Button composable
-                    // and constrain it to the top of the ConstraintLayout
-                    modifier = Modifier.constrainAs(button) {
-                        top.linkTo(parent.top, margin = 10.dp)
-                        start.linkTo(parent.start)
-                        end.linkTo(parent.end, margin = 16.dp)
-                        width = Dimension.fillToConstraints
-                    }) {
+            Button(onClick = {
+                Toast.makeText(this@MainActivity, "Button click", Toast.LENGTH_LONG).show()
+            },
+                // Assign reference "button" to the Button composable
+                // and constrain it to the top of the ConstraintLayout
+                modifier = Modifier.constrainAs(button) {
+                    top.linkTo(parent.top, margin = 10.dp)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end, margin = 16.dp)
+                    width = Dimension.fillToConstraints
+                }) {
                 Text(text = "Button")
             }
 
