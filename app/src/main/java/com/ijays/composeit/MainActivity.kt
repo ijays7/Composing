@@ -21,6 +21,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.ijays.composeit.button.MaterialButtonActivity
+import com.ijays.composeit.dialog.DialogTestActivity
 import com.ijays.composeit.image.ImageDisplayActivity
 import com.ijays.composeit.text.TextDisplayActivity
 import com.ijays.composeit.text.TextFieldActivity
@@ -67,6 +68,13 @@ class MainActivity : AppCompatActivity() {
                     context = context,
                     intent = Intent(context, MaterialButtonActivity::class.java),
                     text = "Material Button"
+                )
+
+                AddSpacer()
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, DialogTestActivity::class.java),
+                    text = "Show Dialog"
                 )
             }
         }

@@ -29,6 +29,8 @@
         <activity android:name=".image.ImageDisplayActivity" />
 
         <activity android:name=".button.MaterialButtonActivity" />
+
+        <activity android:name=".dialog.DialogTestActivity" />
     </application>
 
 </manifest>
