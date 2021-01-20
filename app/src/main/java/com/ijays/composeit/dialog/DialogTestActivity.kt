@@ -1,6 +1,7 @@
 package com.ijays.composeit.dialog
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,8 +27,6 @@ class DialogTestActivity : AppCompatActivity() {
         setContent {
 
             ScrollableColumn {
-
-
                 Button(onClick = {
                     showDialog.value = true
 
@@ -36,8 +35,9 @@ class DialogTestActivity : AppCompatActivity() {
                 }
 
                 if (showDialog.value) {
-                    AlertDialog(onDismissRequest = { /*TODO*/ },
-                        title = { Text(text = "Alert Dialog") },
+                    AlertDialog(onDismissRequest = {
+                        Toast.makeText(this@DialogTestActivity, "onDismiss", Toast.LENGTH_SHORT).show()
+                    }, title = { Text(text = "Alert Dialog") },
                         text = { Text(text = "Yes, This is text content!") },
                         confirmButton = {
                             TextButton(onClick = { showDialog.value = false }) {
