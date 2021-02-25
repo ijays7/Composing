@@ -6,8 +6,8 @@ object ApplicationId {
 }
 
 object Versions {
-    const val kotlin = "1.4.21"
-    const val jetpackCompose = "1.0.0-alpha10"
+    const val kotlin = "1.4.30"
+    const val jetpackCompose = "1.0.0-beta01"
 
 }
 
@@ -16,6 +16,8 @@ object Androidx {
     const val appcompat = "androidx.appcompat:appcompat:1.2.0"
     const val material = "com.google.android.material:material:1.2.1"
     const val lifecycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha06"
+    const val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-rc01"
+    const val activityKtx = "androidx.activity:activity-ktx:1.2.0-rc01"
 }
 
 object Libraries {
@@ -25,5 +27,7 @@ object Libraries {
     const val composeUI = "androidx.compose.ui:ui:${Versions.jetpackCompose}"
     const val composeUITooling = "androidx.compose.ui:ui-tooling:${Versions.jetpackCompose}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.jetpackCompose}"
+    const val composeLiveData =
+        "androidx.compose.runtime:runtime-livedata:${Versions.jetpackCompose}"
 
 }

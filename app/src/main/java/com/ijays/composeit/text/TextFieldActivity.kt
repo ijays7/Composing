@@ -1,22 +1,28 @@
 package com.ijays.composeit.text
 
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 
 /**
@@ -27,9 +33,11 @@ class TextFieldActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ScrollableColumn(modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
                 showSimpleText(text = "TextField 输入")
                 SimpleTextField()
 
@@ -60,9 +68,11 @@ class TextFieldActivity : AppCompatActivity() {
 
     @Composable
     fun addSpacer() {
-        Spacer(modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp))
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        )
     }
 
     @Composable
@@ -73,24 +83,50 @@ class TextFieldActivity : AppCompatActivity() {
         backgroundColor: Color? = Color.White
     ) {
 
-        // savedInstanceState 类似于onSavedInstanceState，在 Activity 重建时保存数据，比如说屏幕发生旋转
-        var text by savedInstanceState { "" }
+        // rememberSaveable 与 remember 类似，但是会在 Activity 或者进程重启时保存数据，比如屏幕发生旋转时候
+        var text by rememberSaveable { mutableStateOf("") }
+
         TextField(
             value = text,
-            modifier = Modifier.fillMaxWidth(),
+            onValueChange = { text = it },
+            placeholder = { Text("placeholder") },
+//            leadingIcon = {
+//                Icon(
+//                    Icons.Filled.Favorite,
+//                    contentDescription = "Localized description"
+//                )
+//            },
+//            trailingIcon = { Icon(Icons.Filled.Info, contentDescription = "Localized description") }
+        )
+
+        TextField(
+            value = text,
             onValueChange = {
                 text = it
             },
-            keyboardOptions = KeyboardOptions(keyboardType = keyboardType ?: KeyboardType.Text),
-            label = if (hasLabel) {
-                { Text(text = "label") }
-            } else null,
-            placeholder = if (hasPlaceHolder) {
-                {
-                    Text(text = "PlaceHolder")
-                }
-            } else null,
-            backgroundColor = backgroundColor ?: Color.White,
+            placeholder = { Text(text = "PlaceHolder") },
+            label = { Text(text = "Label") }
         )
+
+//        TextField(
+//            value = text.toString(),
+//            modifier = Modifier.fillMaxWidth(),
+////            onValueChange = {
+////                Log.e("SONGJIE", "input is $it")
+////            },
+//
+//            keyboardOptions = KeyboardOptions(keyboardType = keyboardType ?: KeyboardType.Text),
+//            label = if (hasLabel) {
+//                Text(text = "label")
+//            } else null,
+//            palceholder = if (hasPlaceHolder) {
+//                Text(text = "PlaceHolder")
+//            },
+//            backgroundColor = backgroundColor ?: Color.White,
+//        )
+    }
+
+    private fun TextField(value: String, onValueChange: (String) -> Unit, label: (() -> Unit)?) {
+
     }
 }

@@ -4,10 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -16,24 +15,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.ijays.composeit.button.MaterialButtonActivity
 import com.ijays.composeit.dialog.DialogTestActivity
 import com.ijays.composeit.image.ImageDisplayActivity
+import com.ijays.composeit.state.livedata.LiveDataActivity
 import com.ijays.composeit.text.TextDisplayActivity
 import com.ijays.composeit.text.TextFieldActivity
 import com.ijays.composeit.text.TextStyleActivity
 import com.ijays.composeit.ui.typography
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            // 使用支持垂直滚动的Composable，指定宽度填充屏幕，
-            ScrollableColumn(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+            // ScrollableColumn 在新版本中被废弃，官方推荐试用 LazyColumn，因为后者只会 compose/measure/draw 可见的元素，
+            // 如果仍需使用 ScrollableColumn，可以在 modifier 中添加 verticalScroll()
+            Column(
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
                 val context = this@MainActivity
 
                 ButtonComponent(
@@ -76,27 +82,42 @@ class MainActivity : AppCompatActivity() {
                     intent = Intent(context, DialogTestActivity::class.java),
                     text = "Show Dialog"
                 )
+
+                AddSpacer()
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, LiveDataActivity::class.java),
+                    text = "Live Data Activity"
+                )
             }
         }
     }
 
     @Composable
     fun NewStory() {
-        val image = imageResource(id = R.drawable.ic_header)
+        val image = painterResource(id = R.drawable.ic_header)
         // 垂直摆放子控件
         Column(modifier = Modifier.padding(16.dp)) {
             val imageModifier =
                 // 指定图片高度
-                Modifier.preferredHeight(180.dp)
+                Modifier
+                    .requiredHeight(180.dp)
                     // 指定图片的宽度应足以填充所属布局
                     .fillMaxWidth()
                     .clip(shape = RoundedCornerShape(12.dp))
                     .clickable(onClick = {
-                        Toast.makeText(this@MainActivity, "Click Test", Toast.LENGTH_LONG).show()
+                        Toast
+                            .makeText(this@MainActivity, "Click Test", Toast.LENGTH_LONG)
+                            .show()
                     })
-            Image(bitmap = image, imageModifier, contentScale = ContentScale.Crop)
+            Image(
+                painter = image,
+                contentDescription = "desc",
+                modifier = imageModifier,
+                contentScale = ContentScale.Crop
+            )
 
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            Spacer(modifier = Modifier.requiredHeight(16.dp))
 
             Text(
                 text = "A day wandering through the sandHills in Shark Fin Cove, and a few of the sights I saw",
@@ -115,30 +136,34 @@ class MainActivity : AppCompatActivity() {
 
     @Composable
     fun ConstraintLayoutContent() {
-        ConstraintLayout(modifier = Modifier.fillMaxWidth().padding(start = 16.dp)) {
-            // Create references for the composables to constrain
-            val (button, text) = createRefs()
-
-            Button(onClick = {
-                Toast.makeText(this@MainActivity, "Button click", Toast.LENGTH_LONG).show()
-            },
-                // Assign reference "button" to the Button composable
-                // and constrain it to the top of the ConstraintLayout
-                modifier = Modifier.constrainAs(button) {
-                    top.linkTo(parent.top, margin = 10.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end, margin = 16.dp)
-                    width = Dimension.fillToConstraints
-                }) {
-                Text(text = "Button")
-            }
-
-            Text(text = "Text", modifier = Modifier.constrainAs(text) {
-                top.linkTo(button.bottom, margin = 16.dp)
-            })
-
-
-        }
+//        ConstraintLayout(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(start = 16.dp)
+//        ) {
+//            // Create references for the composables to constrain
+//            val (button, text) = createRefs()
+//
+//            Button(onClick = {
+//                Toast.makeText(this@MainActivity, "Button click", Toast.LENGTH_LONG).show()
+//            },
+//                // Assign reference "button" to the Button composable
+//                // and constrain it to the top of the ConstraintLayout
+//                modifier = Modifier.constrainAs(button) {
+//                    top.linkTo(parent.top, margin = 10.dp)
+//                    start.linkTo(parent.start)
+//                    end.linkTo(parent.end, margin = 16.dp)
+//                    width = Dimension.fillToConstraints
+//                }) {
+//                Text(text = "Button")
+//            }
+//
+//            Text(text = "Text", modifier = Modifier.constrainAs(text) {
+//                top.linkTo(button.bottom, margin = 16.dp)
+//            })
+//
+//
+//        }
     }
 
     @Composable
@@ -152,7 +177,11 @@ class MainActivity : AppCompatActivity() {
 
     @Composable()
     fun AddSpacer() {
-        Spacer(modifier = Modifier.fillMaxWidth().padding(8.dp))
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        )
     }
 }
 

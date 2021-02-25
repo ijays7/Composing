@@ -2,17 +2,11 @@
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
-        // 添加阿里云 maven 地址
-
-//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha04'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha07'
         classpath Libraries.kotlin
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -23,11 +17,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        // 添加阿里云 maven 地址
-//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
         mavenCentral()
         jcenter()
     }

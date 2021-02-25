@@ -31,6 +31,8 @@
         <activity android:name=".button.MaterialButtonActivity" />
 
         <activity android:name=".dialog.DialogTestActivity" />
+
+        <activity android:name=".state.livedata.LiveDataActivity" />
     </application>
 
 </manifest>
