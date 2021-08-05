@@ -8,17 +8,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
@@ -38,28 +33,56 @@ class TextFieldActivity : AppCompatActivity() {
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                showSimpleText(text = "TextField 输入")
-                SimpleTextField()
+//                showSimpleText(text = "TextField 输入")
+//                SimpleTextField()
+//
+//                addSpacer()
+//                showSimpleText(text = "TextField 添加placeHolder")
+//                SimpleTextField(hasPlaceHolder = true)
+//
+//                addSpacer()
+//                showSimpleText(text = "TextField 添加键盘类型")
+//                SimpleTextField(hasPlaceHolder = true, keyboardType = KeyboardType.Number)
+//
+//                addSpacer()
+//                showSimpleText(text = "TextField 设置背景")
+//                SimpleTextField(
+//                    backgroundColor = Color.Cyan,
+//                    hasPlaceHolder = true,
+//                    keyboardType = KeyboardType.Number
+//                )
 
                 addSpacer()
-                showSimpleText(text = "TextField 添加placeHolder")
-                SimpleTextField(hasPlaceHolder = true)
-
-                addSpacer()
-                showSimpleText(text = "TextField 添加键盘类型")
-                SimpleTextField(hasPlaceHolder = true, keyboardType = KeyboardType.Number)
-
-                addSpacer()
-                showSimpleText(text = "TextField 设置背景")
-                SimpleTextField(
-                    backgroundColor = Color.Cyan,
-                    hasPlaceHolder = true,
-                    keyboardType = KeyboardType.Number
-                )
-
+                HelloContent()
             }
         }
     }
+
+    @Composable
+    fun HelloContent() {
+        var name by rememberSaveable { mutableStateOf("") }
+
+        Hello(name = name) {
+            name = it
+        }
+    }
+
+    @Composable
+    fun Hello(name: String, onNameChange: (String) -> Unit) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            if (name.isNotEmpty()) {
+                Text(
+                    text = "Hello, $name",
+                    modifier = Modifier.padding(bottom = 8.dp),
+                    style = MaterialTheme.typography.h5
+                )
+            }
+            OutlinedTextField(value = name,
+                onValueChange = onNameChange,
+                label = { Text(text = "Name") })
+        }
+    }
+
 
     @Composable
     fun showSimpleText(text: String) {

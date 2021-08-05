@@ -33,6 +33,8 @@
         <activity android:name=".dialog.DialogTestActivity" />
 
         <activity android:name=".state.livedata.LiveDataActivity" />
+
+        <activity android:name=".anim.AnimActivity" />
     </application>
 
 </manifest>
