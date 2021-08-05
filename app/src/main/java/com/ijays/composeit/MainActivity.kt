@@ -19,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.ijays.composeit.anim.AnimActivity
 import com.ijays.composeit.button.MaterialButtonActivity
 import com.ijays.composeit.dialog.DialogTestActivity
 import com.ijays.composeit.image.ImageDisplayActivity
@@ -90,6 +91,13 @@ class MainActivity : AppCompatActivity() {
                     context = context,
                     intent = Intent(context, LiveDataActivity::class.java),
                     text = "Live Data Activity"
+                )
+
+                AddSpacer()
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, AnimActivity::class.java),
+                    text = "Anim Test Activity"
                 )
             }
         }

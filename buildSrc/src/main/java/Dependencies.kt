@@ -6,8 +6,8 @@ object ApplicationId {
 }
 
 object Versions {
-    const val kotlin = "1.4.30"
-    const val jetpackCompose = "1.0.0-beta01"
+    const val kotlin = "1.5.10"
+    const val jetpackCompose = "1.0.0"
 
 }
 
