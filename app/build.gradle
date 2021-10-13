@@ -35,7 +35,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion Versions.jetpackCompose
-        kotlinCompilerVersion '1.5.21'
+        kotlinCompilerVersion Versions.kotlin
     }
 }
 
@@ -51,11 +51,11 @@ dependencies {
     implementation Androidx.activityKtx
 
     // Compose
-    implementation Libraries.composeUI
-    implementation Libraries.composeUITooling
-    implementation Libraries.composeMaterial
-    implementation Libraries.composeLiveData
-    implementation "androidx.activity:activity-compose:1.3.1"
+    implementation Androidx.composeUI
+    implementation Androidx.composeUITooling
+    implementation Androidx.composeMaterial
+    implementation Androidx.composeLiveData
+    implementation Androidx.activityCompose
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
