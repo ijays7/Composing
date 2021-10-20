@@ -26,6 +26,7 @@ import com.ijays.composeit.anim.AnimActivity
 import com.ijays.composeit.button.MaterialButtonActivity
 import com.ijays.composeit.dialog.DialogTestActivity
 import com.ijays.composeit.image.ImageDisplayActivity
+import com.ijays.composeit.layout.LayoutCodeLabTestActivity
 import com.ijays.composeit.state.livedata.LiveDataActivity
 import com.ijays.composeit.text.TextDisplayActivity
 import com.ijays.composeit.text.TextFieldActivity
@@ -101,6 +102,13 @@ class MainActivity : AppCompatActivity() {
                     context = context,
                     intent = Intent(context, AnimActivity::class.java),
                     text = "Anim Test Activity"
+                )
+
+                AddSpacer()
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, LayoutCodeLabTestActivity::class.java),
+                    text = "Layout CodeLab Test"
                 )
             }
         }
@@ -198,9 +206,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Preview("Dark Mode")
-    @Preview(name = "Light Mode",uiMode = Configuration.UI_MODE_NIGHT_NO,showBackground = true)
+    @Preview(name = "Light Mode", uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true)
     @Composable
-    fun PreviewButton(){
+    fun PreviewButton() {
         NewStory()
     }
 }
