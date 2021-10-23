@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ijays.composeit.anim.AnimActivity
+import com.ijays.composeit.basics.BasicActivity
 import com.ijays.composeit.button.MaterialButtonActivity
 import com.ijays.composeit.dialog.DialogTestActivity
 import com.ijays.composeit.image.ImageDisplayActivity
@@ -109,6 +110,13 @@ class MainActivity : AppCompatActivity() {
                     context = context,
                     intent = Intent(context, LayoutCodeLabTestActivity::class.java),
                     text = "Layout CodeLab Test"
+                )
+
+                AddSpacer()
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, BasicActivity::class.java),
+                    text = "Basic CodeLab Test"
                 )
             }
         }

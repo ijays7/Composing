@@ -39,6 +39,8 @@
         <activity android:name=".anim.AnimActivity" />
 
         <activity android:name=".layout.LayoutCodeLabTestActivity" />
+
+        <activity android:name=".basics.BasicActivity" />
     </application>
 
 </manifest>
