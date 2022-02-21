@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion Config.compileSDK
 
     defaultConfig {
         applicationId ApplicationId.id
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdkVersion Config.minSDK
+        targetSdkVersion Config.targetSDk
         versionCode 1
         versionName "1.0"
 
