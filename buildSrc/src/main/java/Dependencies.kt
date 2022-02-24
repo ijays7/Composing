@@ -12,8 +12,8 @@ object Config {
 }
 
 object Versions {
-    const val kotlin = "1.5.31"
-    const val jetpackCompose = "1.0.5"
+    const val kotlin = "1.6.10"
+    const val jetpackCompose = "1.1.0"
 }
 
 object Androidx {

@@ -36,7 +36,6 @@ import com.ijays.composeit.ui.typography
 
 class MainActivity : AppCompatActivity() {
 
-    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

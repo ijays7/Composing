@@ -54,10 +54,12 @@ class DialogTestActivity : AppCompatActivity() {
         }
 
         if (showDialog) {
-            AlertDialog(onDismissRequest = {
-                Toast.makeText(this@DialogTestActivity, "onDismiss", Toast.LENGTH_SHORT)
-                    .show()
-            }, title = { Text(text = "Alert Dialog") },
+            AlertDialog(
+                onDismissRequest = {
+                    Toast.makeText(this@DialogTestActivity, "onDismiss", Toast.LENGTH_SHORT)
+                        .show()
+                },
+                title = { Text(text = "Alert Dialog") },
                 text = { Text(text = "Yes, This is text content!") },
                 confirmButton = {
                     TextButton(onClick = { showDialog = false }) {
