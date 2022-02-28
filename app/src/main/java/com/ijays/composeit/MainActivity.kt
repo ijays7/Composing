@@ -2,6 +2,7 @@ package com.ijays.composeit
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.compose.setContent
@@ -13,16 +14,20 @@ import androidx.compose.material.Button
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposeCompilerApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ijays.composeit.anim.AnimActivity
+import com.ijays.composeit.basics.BasicActivity
 import com.ijays.composeit.button.MaterialButtonActivity
 import com.ijays.composeit.dialog.DialogTestActivity
 import com.ijays.composeit.image.ImageDisplayActivity
+import com.ijays.composeit.layout.LayoutCodeLabTestActivity
 import com.ijays.composeit.state.livedata.LiveDataActivity
 import com.ijays.composeit.text.TextDisplayActivity
 import com.ijays.composeit.text.TextFieldActivity
@@ -31,7 +36,6 @@ import com.ijays.composeit.ui.typography
 
 class MainActivity : AppCompatActivity() {
 
-    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -98,6 +102,20 @@ class MainActivity : AppCompatActivity() {
                     context = context,
                     intent = Intent(context, AnimActivity::class.java),
                     text = "Anim Test Activity"
+                )
+
+                AddSpacer()
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, LayoutCodeLabTestActivity::class.java),
+                    text = "Layout CodeLab Test"
+                )
+
+                AddSpacer()
+                ButtonComponent(
+                    context = context,
+                    intent = Intent(context, BasicActivity::class.java),
+                    text = "Basic CodeLab Test"
                 )
             }
         }
@@ -192,6 +210,13 @@ class MainActivity : AppCompatActivity() {
                 .fillMaxWidth()
                 .padding(8.dp)
         )
+    }
+
+    @Preview("Dark Mode")
+    @Preview(name = "Light Mode", uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true)
+    @Composable
+    fun PreviewButton() {
+        NewStory()
     }
 }
 

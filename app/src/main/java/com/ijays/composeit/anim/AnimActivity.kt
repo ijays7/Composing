@@ -38,7 +38,6 @@ class AnimActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<AnimViewModel>()
 
-    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -118,7 +117,6 @@ class AnimActivity : AppCompatActivity() {
     }
 
 
-    @ExperimentalAnimationApi
     @Composable
     fun VisibilityAnim() {
         var visible by rememberSaveable { mutableStateOf(true) }

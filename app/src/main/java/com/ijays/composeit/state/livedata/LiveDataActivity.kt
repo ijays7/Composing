@@ -29,7 +29,6 @@ import com.ijays.composeit.data.Person
 /**
  * Created by ijays on 2021/1/25.
  */
-@ExperimentalMaterialApi
 class LiveDataActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +63,7 @@ class LiveDataActivity : AppCompatActivity() {
         }
     }
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     fun LiveDataComponentList(personList: List<Person>) {
         // LazyColumn 是一个垂直滚动的列表，并且只会 compose 当前可见的 item，类似于 View 体系中的 RecyclerView

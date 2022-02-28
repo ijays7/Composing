@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0'
+        classpath Libraries.agp
         classpath Libraries.kotlin
 
         // NOTE: Do not place your application dependencies here; they belong
